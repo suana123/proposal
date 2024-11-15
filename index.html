@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #fce4ec;
+        }
+        .container {
+            padding: 20px;
+        }
+        .gif {
+            width: 300px;
+            height: auto;
+            margin-top: 15%;
+        }
+        .question {
+            font-size: 24px;
+            margin: 20px 0;
+            font-weight: bold; 
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .button-container {
+            margin: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .yes {
+            background-color: #4caf50;
+            color: white;
+        }
+        .no {
+            background-color: #f44336;
+            color: white;
+        }
+        .message {
+            font-size: 28px;
+            margin-top: 30px;
+            display: none;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+        }
+        img{
+            border:5px solid black ;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://media1.tenor.com/m/2xXSveH84lIAAAAd/wake-up.gif" alt="Teddy Bear" class="gif">
+        <div class="question" id="question">Do You Love Me? 😍</div>
+        <div class="button-container">
+            <button class="btn yes" id="yes-btn">Yes</button>
+            <button class="btn no" id="no-btn">No</button>
+        </div>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        const questionElement = document.getElementById('question');
+        const yesBtn = document.getElementById('yes-btn');
+        const noBtn = document.getElementById('no-btn');
+        const messageElement = document.getElementById('message');
+
+        let currentQuestion = 1;
+
+        noBtn.addEventListener('mouseover', function () {
+            if (currentQuestion === 4) {
+                const randomX = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+                const randomY = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+                noBtn.style.position = 'absolute';
+                noBtn.style.left = `${randomX}px`;
+                noBtn.style.top = `${randomY}px`;
+            }
+        });
+
+        yesBtn.addEventListener('click', function () {
+            if (currentQuestion === 4) {
+                messageElement.style.display = 'block';
+                messageElement.innerHTML = "I knew you loved me! 😍❤️";
+                questionElement.style.display = 'none';
+                yesBtn.style.display = 'none';
+                noBtn.style.display = 'none';
+            } else {
+                currentQuestion++;
+                loadNextQuestion();
+            }
+        });
+
+        noBtn.addEventListener('click', function () {
+            if (currentQuestion !== 4) {
+                currentQuestion++;
+                loadNextQuestion();
+            }
+        });
+
+        function loadNextQuestion() {
+            if (currentQuestion === 2) {
+                questionElement.textContent = "Plese think Again! 😜❤️";
+            } else if (currentQuestion === 3) {
+                questionElement.textContent = "Ek or Baar Soch Lo ❤️";
+            } else if (currentQuestion === 4) {
+                questionElement.textContent = "Babe Man Jao na!🥰😍";
+            }
+        }
+    </script>
+</body>
+</html>
