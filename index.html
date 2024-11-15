@@ -76,15 +76,16 @@
 
         let currentQuestion = 1;
 
-        noBtn.addEventListener('mouseover', function () {
-            if (currentQuestion === 4) {
-                const randomX = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-                const randomY = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-                noBtn.style.position = 'absolute';
-                noBtn.style.left = `${randomX}px`;
-                noBtn.style.top = `${randomY}px`;
-            }
-        });
+        noBtn.addEventListener('click', function () {
+        if (currentQuestion === 4) {
+            const randomX = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const randomY = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = `${randomX}px`;
+            noBtn.style.top = `${randomY}px`;
+        }
+    });
+
 
         yesBtn.addEventListener('click', function () {
             if (currentQuestion === 4) {
